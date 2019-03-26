@@ -58,7 +58,7 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
+    // { path: 'user-profile',   component: UserProfileComponent },
     { path: 'products',
       children: [{
         path: '',
