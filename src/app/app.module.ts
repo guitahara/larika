@@ -22,8 +22,8 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { ProductsCreateComponent } from './products/products-create/products-create.component';
 import { ProductsService } from './services/product.service';
+import { UsersService } from './services/users.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -43,7 +43,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AdminLayoutComponent
 
   ],
-  providers: [ProductsService],
+  providers: [ProductsService,
+              UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ export class Product {
     description: string;
     price: number;
     title: string;
+    image: File;
     imageUrl: string;
     barCode: string;
     availableQuantity: number

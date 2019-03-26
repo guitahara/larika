@@ -1,11 +1,12 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Product} from '../models/products.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ProductsService {
 
-    endPoint = 'https://larica-api.herokuapp.com/product';
+    endPoint = `${environment.baseUrl}product`;
 
     constructor(private httpClient: HttpClient) {}
     
@@ -18,11 +19,25 @@ export class ProductsService {
     }
 
     post(product: Product) {
-        return this.httpClient.post<Product>(this.endPoint, product);
+        const form_data = new FormData();
+        
+        // tslint:disable-next-line:forin
+        for (const key in product) {
+            form_data.append(key, product[key]);
+        };
+
+        return this.httpClient.post<Product>(this.endPoint, form_data);
     }
 
     put(product: Product, id: string) {
-        return this.httpClient.put<Product>(`${this.endPoint}/${id}`, product);
+        const form_data = new FormData();
+        
+        // tslint:disable-next-line:forin
+        for (const key in product) {
+            form_data.append(key, product[key]);
+        };
+
+        return this.httpClient.put<Product>(`${this.endPoint}/${id}`, form_data);
     }
     
 }

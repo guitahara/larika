@@ -8,9 +8,11 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { ProductsComponent } from '../../products/products.component';
-import { ProductsCreateComponent } from '../../products/products-create/products-create.component';
-import { ProductsEditComponent } from '../../products/products-edit/products-edit.component';
+import { ProductsComponent } from '../../components/products/products.component';
+import { ProductsCreateComponent } from '../../components/products/products-create/products-create.component';
+import { ProductsEditComponent } from '../../components/products/products-edit/products-edit.component';
+import { UsersComponent } from 'app/components/users/users.component';
+import { UsersCreateComponent } from 'app/components/users/users-create/users-create.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -68,6 +70,17 @@ export const AdminLayoutRoutes: Routes = [
         path: 'edit/:id' ,
         component: ProductsEditComponent
       }]},
+    { path: 'users',
+    children: [{
+      path: '',
+      component: UsersComponent
+    }, {
+      path: 'create' ,
+      component: UsersCreateComponent
+    //, {
+    //   path: 'edit/:id' ,
+    //   component: ProductsEditComponent
+    }]},
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },

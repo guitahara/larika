@@ -18,9 +18,13 @@ import {
   MatRippleModule,
   MatTooltipModule,
 } from '@angular/material';
-import { ProductsComponent } from '../../products/products.component';
-import { ProductsCreateComponent } from '../../products/products-create/products-create.component';
-import { ProductsEditComponent } from '../../products/products-edit/products-edit.component';
+import { ProductsComponent } from '../../components/products/products.component';
+import { ProductsCreateComponent } from '../../components/products/products-create/products-create.component';
+import { ProductsEditComponent } from '../../components/products/products-edit/products-edit.component';
+import { UsersComponent } from 'app/components/users/users.component';
+import { UsersEditComponent } from 'app/components/users/users-edit/users-edit.component';
+import { UsersCreateComponent } from 'app/components/users/users-create/users-create.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -42,7 +46,10 @@ import { ProductsEditComponent } from '../../products/products-edit/products-edi
     NotificationsComponent,
     UpgradeComponent,
     ProductsCreateComponent,
-    ProductsEditComponent
+    ProductsEditComponent,
+    UsersComponent,
+    UsersCreateComponent,
+    UsersEditComponent
   ]
 })
 

@@ -1,0 +1,47 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-primary">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <h4 class="card-title ">Usuários</h4>
+                              <p class='card-category'>Lista de usuários cadastrados</p>
+                          </div>
+                          <div class='col-md-6'> 
+                              <button mat-fab color='secondary' class="pull-right" type="button" [routerLink]="['create']" >
+                                            <i class="material-icons" style="color:#e53935">add</i>                                    
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      ID
+                                  </th>
+                                  <th>
+                                      Nome
+                                  </th>
+                                  <th>
+                                      E-mail
+                                  </th>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor='let user of users' [routerLink]="['edit', email._id]">
+                                    <td>{{user._id}}</td>
+                                    <td>{{user.name}}</td>
+                                    <td>{{use.email}}</td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
