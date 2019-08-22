@@ -4,6 +4,6 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  baseUrl: 'http://localhost:3000/api/',
+  baseUrl: 'https://glupy-dashboard-api.herokuapp.com/api/',
   production: false
 };

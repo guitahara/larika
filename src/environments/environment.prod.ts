@@ -1,4 +1,4 @@
 export const environment = {
-  baseUrl: 'https://larica-api.herokuapp.com/',
+  baseUrl: 'https://glupy-dashboard-api.herokuapp.com/api/',
   production: true
 };
