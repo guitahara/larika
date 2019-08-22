@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.localStorage.persist('name', user['name'])
       this.localStorage.persist('username', user['username'])
       this.localStorage.persist('token', user['token'])
-      this.router.navigate(['dashboard'])
+      this.router.navigate(['/dashboard'])
     })
   }
 

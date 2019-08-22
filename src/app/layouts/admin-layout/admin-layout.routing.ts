@@ -74,10 +74,10 @@ export const AdminLayoutRoutes: Routes = [
         component: ProductsEditComponent
       }]},
     { path: 'users',
+    canActivate: [AuthGuardService],
     children: [{
       path: '',
-      component: UsersComponent,
-      canActivate: [AuthGuardService]
+      component: UsersComponent
     }, {
       path: 'create' ,
       component: UsersCreateComponent
