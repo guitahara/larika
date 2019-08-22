@@ -13,6 +13,8 @@ import { ProductsCreateComponent } from '../../components/products/products-crea
 import { ProductsEditComponent } from '../../components/products/products-edit/products-edit.component';
 import { UsersComponent } from 'app/components/users/users.component';
 import { UsersCreateComponent } from 'app/components/users/users-create/users-create.component';
+import { LoginComponent } from '../../components/login/login.component';
+import { AuthGuardService } from '../../services/route-guard.service'
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -57,9 +59,10 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    { path: 'dashboard',      component: DashboardComponent },
+    { path: 'dashboard',      component: DashboardComponent, canActivate: [AuthGuardService] },
     // { path: 'user-profile',   component: UserProfileComponent },
     { path: 'products',
+      canActivate: [AuthGuardService],
       children: [{
         path: '',
         component: ProductsComponent
@@ -73,7 +76,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'users',
     children: [{
       path: '',
-      component: UsersComponent
+      component: UsersComponent,
+      canActivate: [AuthGuardService]
     }, {
       path: 'create' ,
       component: UsersCreateComponent
@@ -81,6 +85,7 @@ export const AdminLayoutRoutes: Routes = [
     //   path: 'edit/:id' ,
     //   component: ProductsEditComponent
     }]},
+    { path: 'login', component: LoginComponent},
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },

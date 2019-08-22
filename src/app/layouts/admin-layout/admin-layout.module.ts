@@ -24,12 +24,14 @@ import { ProductsEditComponent } from '../../components/products/products-edit/p
 import { UsersComponent } from 'app/components/users/users.component';
 import { UsersEditComponent } from 'app/components/users/users-edit/users-edit.component';
 import { UsersCreateComponent } from 'app/components/users/users-create/users-create.component';
+import { LoginComponent } from '../../components/login/login.component'
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatRippleModule,
     MatInputModule,
@@ -49,7 +51,8 @@ import { UsersCreateComponent } from 'app/components/users/users-create/users-cr
     ProductsEditComponent,
     UsersComponent,
     UsersCreateComponent,
-    UsersEditComponent
+    UsersEditComponent,
+    LoginComponent
   ]
 })
 

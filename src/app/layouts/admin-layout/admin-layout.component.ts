@@ -15,10 +15,13 @@ export class AdminLayoutComponent implements OnInit {
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
+  private url: string;
 
   constructor( public location: Location, private router: Router) {}
 
   ngOnInit() {
+      this.url = this.router.url
+      console.log('url', this.url)
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
       if (isWindows && !document.getElementsByTagName('body')[0].classList.contains('sidebar-mini')) {
@@ -55,6 +58,12 @@ export class AdminLayoutComponent implements OnInit {
           ps = new PerfectScrollbar(elemSidebar);
       }
   }
+
+  ngOnDestroy(){
+    this.url = this.router.url
+    console.log('url', this.url)
+  }
+
   ngAfterViewInit() {
       this.runOnRouteChange();
   }
@@ -69,6 +78,8 @@ export class AdminLayoutComponent implements OnInit {
       }
   }
   runOnRouteChange(): void {
+    this.url = this.router.url
+    console.log('url', this.url)
     if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
       const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
       const ps = new PerfectScrollbar(elemMainPanel);
@@ -81,6 +92,14 @@ export class AdminLayoutComponent implements OnInit {
           bool = true;
       }
       return bool;
+  }
+
+  isNotLogin(): boolean {
+    let bool = false;
+    if (this.url !== '/login') {
+        bool = true;
+    }
+    return bool
   }
 
 }

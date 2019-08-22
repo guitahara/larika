@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -25,11 +25,17 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ProductsService } from './services/product.service';
 import { UsersService } from './services/users.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LocalStorage } from './helper/localStorage';
+import { LoginService } from './services/login.service';
+import { AuthGuardService } from './services/route-guard.service';
+import { AuthService }  from './services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt'
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     RouterModule,
@@ -44,7 +50,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
   ],
   providers: [ProductsService,
-              UsersService],
+              UsersService,
+              LocalStorage,
+              LoginService,
+              AuthGuardService,
+              AuthService,
+              JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
