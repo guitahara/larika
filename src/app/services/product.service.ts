@@ -1,43 +1,41 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Product} from '../models/products.model';
 import { environment } from '../../environments/environment';
+import { LocalStorage } from '../helper/localStorage'
 
 @Injectable()
 export class ProductsService {
 
-    endPoint = `${environment.baseUrl}product`;
+    endPoint = `${environment.baseUrl}products`;
 
     constructor(private httpClient: HttpClient) {}
     
     getProducts() {
-        return this.httpClient.get<Array<Product>>(this.endPoint);
+        const headers = this.setHeaders()
+        return this.httpClient.get<Array<Product>>(this.endPoint, {headers});
     }
 
     getProductsById(id: string) {
-        return this.httpClient.get<Product>(`${this.endPoint}/${id}`);
+        const headers = this.setHeaders()
+        return this.httpClient.get<Product>(`${this.endPoint}/${id}`,{headers});
     }
 
     post(product: Product) {
-        const form_data = new FormData();
-        
-        // tslint:disable-next-line:forin
-        for (const key in product) {
-            form_data.append(key, product[key]);
-        };
-
-        return this.httpClient.post<Product>(this.endPoint, form_data);
+        const headers = this.setHeaders()
+        return this.httpClient.post<Product>(this.endPoint, product, {headers});
     }
 
     put(product: Product, id: string) {
-        const form_data = new FormData();
-        
-        // tslint:disable-next-line:forin
-        for (const key in product) {
-            form_data.append(key, product[key]);
-        };
+        const headers = this.setHeaders()
+        return this.httpClient.put<Product>(`${this.endPoint}/${id}`, product, {headers});
+    }
 
-        return this.httpClient.put<Product>(`${this.endPoint}/${id}`, form_data);
+    private setHeaders () {
+        const token = new LocalStorage().retrieve('token')
+        let headers = new HttpHeaders().set('Content-Type', 'application/json')
+                               .set('authorization', 'Bearer ' + token)
+        return headers
     }
     
 }

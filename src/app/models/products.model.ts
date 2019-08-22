@@ -1,10 +1,9 @@
 export class Product {
-    _id: string;
+    id: string;
     description: string;
-    price: number;
+    defaultPrice: number;
     title: string;
     image: File;
     imageUrl: string;
     barCode: string;
-    availableQuantity: number
 }

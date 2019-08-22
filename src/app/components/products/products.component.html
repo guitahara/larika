@@ -27,26 +27,22 @@
                                       Nome
                                   </th>
                                   <th>
-                                      Preço
+                                      Descrição
                                   </th>
                                   <th>
-                                      Descrição
+                                      Preço
                                   </th>
                                   <th>
                                       Código
                                   </th>
-                                  <th>
-                                      Estoque
-                                  </th>
                               </thead>
                               <tbody>
-                                <tr *ngFor='let product of products' [routerLink]="['edit', product._id]">
-                                    <td>{{product._id}}</td>
+                                <tr *ngFor='let product of products' [routerLink]="['edit', product.id]">
+                                    <td>{{product.id}}</td>
                                     <td>{{product.title}}</td>
-                                    <td>{{product.price}}</td>
                                     <td>{{product.description}}</td>
+                                    <td>{{product.defaultPrice}}</td>
                                     <td>{{product.barCode}}</td>
-                                    <td>{{product.availableQuantity}}</td>
                                 </tr>
                               </tbody>
                           </table>
