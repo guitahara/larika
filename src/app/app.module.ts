@@ -29,7 +29,8 @@ import { LocalStorage } from './helper/localStorage';
 import { LoginService } from './services/login.service';
 import { AuthGuardService } from './services/route-guard.service';
 import { AuthService }  from './services/auth.service';
-import { JwtHelperService } from '@auth0/angular-jwt'
+import { JwtHelperService } from '@auth0/angular-jwt';
+import {StoresService} from './services/store.service'
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { JwtHelperService } from '@auth0/angular-jwt'
               LoginService,
               AuthGuardService,
               AuthService,
-              JwtHelperService],
+              JwtHelperService,
+              StoresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

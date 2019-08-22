@@ -14,7 +14,10 @@ import { ProductsEditComponent } from '../../components/products/products-edit/p
 import { UsersComponent } from 'app/components/users/users.component';
 import { UsersCreateComponent } from 'app/components/users/users-create/users-create.component';
 import { LoginComponent } from '../../components/login/login.component';
-import { AuthGuardService } from '../../services/route-guard.service'
+import { AuthGuardService } from '../../services/route-guard.service';
+import { StoresComponent } from '../../components/stores/stores.component';
+import { StoresCreateComponent } from '../../components/stores/stores-create/stores-create.component';
+import { StoresEditComponent } from '../../components/stores/stores-edit/stores-edit.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -72,6 +75,18 @@ export const AdminLayoutRoutes: Routes = [
       }, {
         path: 'edit/:id' ,
         component: ProductsEditComponent
+      }]},
+    { path: 'stores',
+      canActivate: [AuthGuardService],
+      children: [{
+        path: '',
+        component: StoresComponent
+      }, {
+        path: 'create' ,
+        component: StoresCreateComponent
+      }, {
+        path: 'edit/:id' ,
+        component: StoresEditComponent
       }]},
     { path: 'users',
     canActivate: [AuthGuardService],
