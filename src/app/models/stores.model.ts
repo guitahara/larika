@@ -1,7 +1,7 @@
 import {Address} from './address.model'
 
 export class Store {
-  address: Address;
+  address = new Address();
   seller: String;
   uuid: String;
   createdAt: Date;

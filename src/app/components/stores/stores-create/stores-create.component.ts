@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from 'app/models/stores.model';
+import { StoresService } from 'app/services/store.service';
 
 @Component({
   selector: 'app-stores-create',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoresCreateComponent implements OnInit {
 
-  constructor() { }
+  store: Store = new Store();
+
+  constructor(private storesService: StoresService) { }
 
   ngOnInit() {
+  }
+
+  create() {
+    this.storesService.post(this.store).subscribe();
   }
 
 }
