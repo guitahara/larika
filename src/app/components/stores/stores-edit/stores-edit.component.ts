@@ -44,9 +44,18 @@ export class StoresEditComponent implements OnInit {
   }
 
   addProduct(product: StoreProduct) {
-    // alert(product)
     this.listService.postListProduct(this.id, product).subscribe()
     this.populateStore()
   }
+
+  editProduct(product: StoreProduct) {
+    this.listService.putListProduct(this.id, product, product.id.valueOf()).subscribe()
+    this.populateStore()
+  }
+
+  removeProduct(productId: string) {
+    this.listService.deleteListProduct(this.id, productId).subscribe()
+    this.populateStore()
+  } 
 
 }

@@ -37,7 +37,7 @@ export class ProductTypeaheadComponent implements OnInit {
       product: product.id,
       useDefaultPrice: false,
       price: 1,
-      availableQuantity: 10,
+      availableQuantity: 1,
       store: this.store,
       seller: this.userService.getSellerId()
     }

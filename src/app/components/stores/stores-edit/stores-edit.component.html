@@ -68,9 +68,6 @@
                         <table class="table">
                             <thead class="text-danger">
                                 <th>
-                                    ID
-                                </th>
-                                <th>
                                     Nome
                                 </th>
                                 <th>
@@ -91,18 +88,38 @@
                                 <th>
                                     Usar Preço Padrão?
                                 </th>
+                                <th></th>
+                                <th></th>
                             </thead>
                             <tbody>
                               <tr *ngFor='let product of productsList'>
-                                  <td>{{product.id}}</td>
                                   <td>{{product.title}}</td>
                                   <td>{{product.description}}</td>
                                   <td>{{product.defaultPrice}}</td>
-                                  <td>{{product.price}}</td>
+                                  <td *ngIf='!product.edit'>{{product.price}}</td>
+                                  <td *ngIf='product.edit'>
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Preço" type='number' [(ngModel)]='product.price'>
+                                    </mat-form-field>
+                                  </td>
                                   <td>{{product.barCode}}</td>
-                                  <td>{{product.availableQuantity}}</td>
+                                  <td *ngIf='!product.edit'>{{product.availableQuantity}}</td>
+                                  <td *ngIf='product.edit'>
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Quantidade" type='number' [(ngModel)]='product.availableQuantity'>
+                                    </mat-form-field>
+                                  </td>
                                   <td style='text-align: center;padding-bottom: 34px;'>
                                       <input class="form-check-input" type="checkbox" [checked]="product.useDefaultPrice" (change)="product.useDefaultPrice = !product.useDefaultPrice">
+                                  </td>
+                                  <td *ngIf='!product.edit'>
+                                    <i class="material-icons action" (click)='product.edit = true'>edit</i>
+                                  </td>
+                                  <td *ngIf='!product.edit'>
+                                    <i class="material-icons action" (click)='removeProduct(product.id)'>delete</i>
+                                  </td>
+                                  <td *ngIf='product.edit'>
+                                    <i class="material-icons action" (click)='editProduct(product)' >check</i>
                                   </td>
                               </tr>
                             </tbody>
