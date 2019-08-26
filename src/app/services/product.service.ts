@@ -2,7 +2,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Product} from '../models/products.model';
 import { environment } from '../../environments/environment';
-import { LocalStorage } from '../helper/localStorage'
+import { LocalStorage } from '../helper/localStorage';
+import {stringify} from 'querystring'
 
 @Injectable()
 export class ProductsService {
@@ -11,9 +12,10 @@ export class ProductsService {
 
     constructor(private httpClient: HttpClient) {}
     
-    getProducts() {
+    getProducts(filter: Object = {}) {
         const headers = this.setHeaders()
-        return this.httpClient.get<Array<Product>>(this.endPoint, {headers});
+        const qs = stringify(filter)
+        return this.httpClient.get<Array<Product>>(`${this.endPoint}?${qs}`, {headers});
     }
 
     getProductsById(id: string) {

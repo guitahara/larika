@@ -28,6 +28,7 @@ import { LoginComponent } from '../../components/login/login.component';
 import { StoresComponent } from '../../components/stores/stores.component';
 import { StoresCreateComponent } from '../../components/stores/stores-create/stores-create.component'
 import { StoresEditComponent } from '../../components/stores/stores-edit/stores-edit.component'
+import { ProductTypeaheadComponent } from 'app/components/product-typeahead/product-typeahead.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -57,7 +58,8 @@ import { StoresEditComponent } from '../../components/stores/stores-edit/stores-
     LoginComponent,
     StoresComponent,
     StoresCreateComponent,
-    StoresEditComponent
+    StoresEditComponent,
+    ProductTypeaheadComponent
   ]
 })
 

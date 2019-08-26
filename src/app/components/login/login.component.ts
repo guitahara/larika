@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.username, this.password).subscribe(user => {
+      this.localStorage.persist('sellerId', user['sellerId'])
       this.localStorage.persist('name', user['name'])
       this.localStorage.persist('username', user['username'])
       this.localStorage.persist('token', user['token'])

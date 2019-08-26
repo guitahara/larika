@@ -30,7 +30,8 @@ import { LoginService } from './services/login.service';
 import { AuthGuardService } from './services/route-guard.service';
 import { AuthService }  from './services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import {StoresService} from './services/store.service'
+import {StoresService} from './services/store.service';
+import {ListService} from './services/list.service';
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import {StoresService} from './services/store.service'
               AuthGuardService,
               AuthService,
               JwtHelperService,
-              StoresService],
+              StoresService,
+              ListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

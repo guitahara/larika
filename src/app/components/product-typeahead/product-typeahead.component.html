@@ -1,0 +1,28 @@
+<div>
+  <div class='row'>
+    <mat-form-field class="example-full-width col-md-11">
+      <input matInput [(ngModel)]='productTitle' placeholder="Digite o nome do produto">
+    </mat-form-field> 
+    <button mat-raised-button type="button" class="btn btn-round btn-success pull-right" (click)='findProduct()'>
+      <span>
+          <i class="material-icons">search</i>
+      </span>
+    </button>
+  </div>
+  <div class='row'>
+    <div class='col-md-12 table-responsive table-absolute'>
+      <table class='table'>
+        <tbody>
+          <tr *ngFor='let product of products' class='table-row'>
+            <td>      
+              <span >
+                <i class="material-icons add-sign" (click)='addProduct(product)'>add</i>
+              </span>
+            </td>  
+            <td class='text-left'>{{product.title}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
