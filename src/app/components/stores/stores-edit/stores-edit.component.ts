@@ -15,6 +15,7 @@ export class StoresEditComponent implements OnInit {
   store: Store = new Store();
   productsList: Array<StoreProduct> = [];
   activeTab: Number = 1;
+  loading: Boolean = false;
   constructor(private storesService: StoresService,
     private route: ActivatedRoute,
     private router: Router,
@@ -26,12 +27,15 @@ export class StoresEditComponent implements OnInit {
   }
 
   populateStore() {
+    this.loading = true;
     this.storesService.getStoresById(this.id).subscribe(store => {
       this.store = store;
+      this.listService.getList(this.id).subscribe(list => {
+        this.productsList = list
+        this.loading = false
+      });
     });
-    this.listService.getList(this.id).subscribe(list => {
-      this.productsList = list
-    });
+    
   }
 
   edit() {

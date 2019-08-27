@@ -8,7 +8,8 @@
                         <p class="card-category">Edite seu produto</p>
                     </div>
                     <div class="card-body">
-                        <div>
+                        <app-form-placeholder *ngIf='loading'></app-form-placeholder>
+                        <div *ngIf='!loading'>
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
@@ -46,16 +47,28 @@
             <div class="col-md-4">
                 <div class="card card-profile">
                     <div class="card-avatar">
-                        <span (click)='clickFileInput()'>
+                        <span  (click)='clickFileInput()'>
                             <img class="img" src="{{product.imageUrl?product.imageUrl:'../assets/img/placeholder-image.jpg'}}" />
                         </span>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Nome do Produto</h4>
-                        <p class="card-description">
-                            {{product.description? product.description: 'Descrição do produto'}}
-                        </p>
-                        <a href="" class="btn btn-info btn-round">Código de Barras</a>
+                        <ngx-content-loading 
+                            *ngIf='loading'
+                            [speed]="'1500ms'"
+                            [width]="500"
+                            [height]="300"
+                            [primaryColor]="'#fdc0a4'"
+                            [secondaryColor]="'#fbc2c2'">
+                                <svg:g ngx-rect width="600" height="30" y="10" x="0" rx="5" ry="5"></svg:g>
+                                <svg:g ngx-rect width="600" height="20" y="60" x="0" rx="5" ry="5"></svg:g>
+                        </ngx-content-loading>
+                        <div *ngIf='!loading'>
+                            <h4 class="card-title">Nome do Produto</h4>
+                            <p class="card-description">
+                                {{product.description? product.description: 'Descrição do produto'}}
+                            </p>
+                            <a href="" class="btn btn-info btn-round">Código de Barras</a>
+                        </div>
                     </div>
                 </div>
             </div>

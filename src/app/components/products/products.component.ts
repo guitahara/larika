@@ -9,11 +9,14 @@ import { Product } from '../../models/products.model';
 })
 export class ProductsComponent implements OnInit {
   products: Array<Product>;
+  loading: Boolean = false;
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.productsService.getProducts().subscribe(products => {
       this.products = products;
+      this.loading = false;
     });
   }
 

@@ -11,6 +11,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { NgxContentLoadingModule} from 'ngx-content-loading'
 
 import {
   MatButtonModule,
@@ -29,6 +30,8 @@ import { StoresComponent } from '../../components/stores/stores.component';
 import { StoresCreateComponent } from '../../components/stores/stores-create/stores-create.component'
 import { StoresEditComponent } from '../../components/stores/stores-edit/stores-edit.component'
 import { ProductTypeaheadComponent } from 'app/components/product-typeahead/product-typeahead.component';
+import { FormPlaceholderComponent } from 'app/components/loading/form-placeholder/form-placeholder.component';
+import { ListPlaceholderComponent } from 'app/components/loading/list-placeholder/list-placeholder.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -39,6 +42,7 @@ import { ProductTypeaheadComponent } from 'app/components/product-typeahead/prod
     MatRippleModule,
     MatInputModule,
     MatTooltipModule,
+    NgxContentLoadingModule,
   ],
   declarations: [
     DashboardComponent,
@@ -59,7 +63,9 @@ import { ProductTypeaheadComponent } from 'app/components/product-typeahead/prod
     StoresComponent,
     StoresCreateComponent,
     StoresEditComponent,
-    ProductTypeaheadComponent
+    ProductTypeaheadComponent,
+    FormPlaceholderComponent,
+    ListPlaceholderComponent
   ]
 })
 

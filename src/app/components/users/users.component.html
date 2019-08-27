@@ -17,7 +17,8 @@
                       </div>
                   </div>
                   <div class="card-body">
-                      <div class="table-responsive">
+                     <app-list-placeholder *ngIf='loading'></app-list-placeholder>
+                      <div class="table-responsive" *ngIf='!loading'>
                           <table class="table">
                               <thead class=" text-danger">
                                   <th>

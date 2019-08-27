@@ -10,12 +10,14 @@ import { User } from 'app/models/user.model';
 export class UsersComponent implements OnInit {
 
   users: Array<User>;
-
+  loading: Boolean = false;
   constructor(private userService: UsersService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.userService.getUsers().subscribe(users => {
       this.users = users;
+      this.loading = false
     });
   }
 

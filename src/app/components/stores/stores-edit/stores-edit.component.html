@@ -22,45 +22,48 @@
                     </ul>
                   </div>
                 <div *ngIf='activeTab === 1' class="card-body">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Endereço" [(ngModel)]='store.address.streetAddress'>
-                            </mat-form-field>
+                    <app-form-placeholder *ngIf='loading'></app-form-placeholder>
+                    <div *ngIf='!loading'>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Endereço" [(ngModel)]='store.address.streetAddress'>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Número" type='number' [(ngModel)]='store.address.number'>
+                                </mat-form-field>
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Número" type='number' [(ngModel)]='store.address.number'>
-                            </mat-form-field>
+                        <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Cidade" [(ngModel)]='store.address.city'>
+                              </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Estado" [(ngModel)]='store.address.state'>
+                              </mat-form-field>
+                          </div>
                         </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Pais" [(ngModel)]='store.address.country'>
+                              </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="CEP" type='number' [(ngModel)]='store.address.zipCode'>
+                              </mat-form-field>
+                          </div>
+                        </div>
+                          <button mat-raised-button type="button"[routerLink]="['/stores']">Voltar</button>
+                          <button mat-raised-button type="button" class="btn btn-info pull-right" (click)='edit()'>Editar</button>
+                          <div class="clearfix"></div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                          <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Cidade" [(ngModel)]='store.address.city'>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-md-6">
-                          <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Estado" [(ngModel)]='store.address.state'>
-                          </mat-form-field>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                          <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Pais" [(ngModel)]='store.address.country'>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-md-6">
-                          <mat-form-field class="example-full-width">
-                              <input matInput placeholder="CEP" type='number' [(ngModel)]='store.address.zipCode'>
-                          </mat-form-field>
-                      </div>
-                    </div>
-                      <button mat-raised-button type="button"[routerLink]="['/stores']">Voltar</button>
-                      <button mat-raised-button type="button" class="btn btn-info pull-right" (click)='edit()'>Editar</button>
-                      <div class="clearfix"></div>
                     </div>
                 <div *ngIf='activeTab === 2' class="card-body">
                     <app-product-typeahead (response)='addProduct($event)'></app-product-typeahead>

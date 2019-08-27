@@ -9,11 +9,14 @@ import { StoresService } from '../../services/store.service'
 })
 export class StoresComponent implements OnInit {
   stores: Array<Store>;
+  loading: Boolean = false;
   constructor(private storesService: StoresService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.storesService.getStores().subscribe(stores => {
       this.stores = stores;
+      this.loading = false;
     });
   }
 

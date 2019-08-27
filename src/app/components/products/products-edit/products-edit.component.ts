@@ -12,12 +12,15 @@ export class ProductsEditComponent implements OnInit {
 
   id: string = this.route.snapshot.params['id'];
   product: Product = new Product();
+  loading: Boolean = false;
   constructor(private productsService: ProductsService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.loading = true;
     this.productsService.getProductsById(this.id).subscribe(product => {
       this.product = product;
+      this.loading = false;
     });
   }
 
