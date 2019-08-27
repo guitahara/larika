@@ -10,12 +10,17 @@
                     <div class="card-body">
                         <form (submit)='create()'>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                       <input matInput placeholder="Nome" name='name'[(ngModel)]='user.name' required>
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Username" name='username'[(ngModel)]='user.userName' required>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                       <input matInput placeholder="E-mail" name='email' type="email" [(ngModel)]='user.email' required>
                                     </mat-form-field>

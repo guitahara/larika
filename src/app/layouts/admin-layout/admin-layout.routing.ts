@@ -96,9 +96,10 @@ export const AdminLayoutRoutes: Routes = [
     }, {
       path: 'create' ,
       component: UsersCreateComponent
-    //, {
-    //   path: 'edit/:id' ,
-    //   component: ProductsEditComponent
+    }
+    , {
+      path: 'edit/:id' ,
+      component: ProductsEditComponent
     }]},
     { path: 'login', component: LoginComponent},
     { path: 'table-list',     component: TableListComponent },
