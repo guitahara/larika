@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'app/models/products.model';
 import { ProductsService } from 'app/services/product.service';
 import {DOCUMENT} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-create',
@@ -12,13 +13,14 @@ export class ProductsCreateComponent implements OnInit {
 
   product: Product = new Product();
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private router: Router) { }
 
   ngOnInit() {
   }
 
   Create() {
     this.productService.post(this.product).subscribe();
+    this.router.navigate(['/products'])
   }
 
   clickFileInput() {

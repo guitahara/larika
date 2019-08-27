@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/product.service';
 import { Product } from '../../../models/products.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-edit',
@@ -14,7 +14,9 @@ export class ProductsEditComponent implements OnInit {
   product: Product = new Product();
   loading: Boolean = false;
   constructor(private productsService: ProductsService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router 
+    ) { }
 
   ngOnInit() {
     this.loading = true;
@@ -26,6 +28,7 @@ export class ProductsEditComponent implements OnInit {
 
   edit() {
     this.productsService.put(this.product, this.id).subscribe();
+    this.router.navigate(['/products'])
   }
 
   clickFileInput() {

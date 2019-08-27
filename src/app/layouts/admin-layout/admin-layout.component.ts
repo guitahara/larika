@@ -17,7 +17,7 @@ export class AdminLayoutComponent implements OnInit {
   private yScrollStack: number[] = [];
   private url: string;
 
-  constructor( public location: Location, private router: Router) {}
+  constructor( public location: Location, public router: Router) {}
 
   ngOnInit() {
       this.url = this.router.url
