@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {Router} from '@angular/router'
 import {LocalStorage} from '../../helper/localStorage'
 import {LoginService} from '../../services/login.service'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     public formBuilder: FormBuilder,
     public localStorage: LocalStorage,
     public loginService: LoginService,
+    private toastrService: ToastrService,
     public router: Router) {
 
     this.loginForm = formBuilder.group({
@@ -31,13 +33,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.username, this.password).subscribe(user => {
-      this.localStorage.persist('sellerId', user['sellerId'])
-      this.localStorage.persist('name', user['name'])
-      this.localStorage.persist('username', user['username'])
-      this.localStorage.persist('token', user['token'])
-      this.router.navigate(['/dashboard'])
-    })
+      this.loginService.login(this.username, this.password).subscribe(user => {
+        this.localStorage.persist('sellerId', user['sellerId'])
+        this.localStorage.persist('name', user['name'])
+        this.localStorage.persist('username', user['username'])
+        this.localStorage.persist('token', user['token'])
+        this.toastrService.success("Bem vindo!")
+        this.router.navigate(['/dashboard'])
+      },error =>{
+        this.toastrService.error('Ops! Não foi possível realizar seu login.')
+      })
   }
 
   @HostListener('document:keypress', ['$event'])

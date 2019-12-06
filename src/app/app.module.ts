@@ -32,6 +32,7 @@ import { AuthService }  from './services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {StoresService} from './services/store.service';
 import {ListService} from './services/list.service';
+import {ToastrModule} from 'ngx-toastr'
 
 @NgModule({
   imports: [
@@ -42,6 +43,8 @@ import {ListService} from './services/list.service';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
