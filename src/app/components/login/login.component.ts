@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {Router} from '@angular/router'
 import {LocalStorage} from '../../helper/localStorage'
@@ -38,6 +38,12 @@ export class LoginComponent implements OnInit {
       this.localStorage.persist('token', user['token'])
       this.router.navigate(['/dashboard'])
     })
+  }
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+    const {key} = event
+    if(key === 'Enter') this.login();
   }
 
 }
